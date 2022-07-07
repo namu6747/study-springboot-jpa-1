@@ -17,7 +17,7 @@ public class Member {
     @Id @GeneratedValue
     private Long id;
     private String name;
-    private Address address;
-    private List<Order> orders;
+ //   private Address address;
+  //  private List<Order> orders;
 
 }

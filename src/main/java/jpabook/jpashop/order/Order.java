@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+
 public class Order {
 
     private Long id;

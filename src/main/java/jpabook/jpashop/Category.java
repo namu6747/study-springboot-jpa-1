@@ -9,6 +9,7 @@ public class Category {
     private Long id;
     private String name;
     private List<Item> items;
+    
     private Category parent;
     private List<Category> child;
 
