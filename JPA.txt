@@ -75,8 +75,60 @@ RDBMS에서는 일반적인 설계론 그게 안된다.
 테이블에서의 1대다 관계에서는 무조건 다에 외래키가 꽂힌다.
 연관 관계의 주인은 외래키를 가진 테이블로 생각한다.
 
+entity관련된 것을 domain package에 다 넣었음
+@Column(name = "member_id") 이렇게 안하면 그냥 id로 column 명이 정해짐
+Address는 JPA 내장 타입
+내장타입을 쓸 때는 내장 클래스에 Embeddable을 작성하거나
+필드에 선언하고 Embedded 둘 중 하나만 사용하면되나 보통 두 개를 같이 씀 
+@JoinColumn(name = "member_id") FK를 member_id로 지정
+@Enumerated(EnumType.STRING) Enum 필드 어노테이션
+ORDINAL 사용하면 순서가 바뀌면 난리남
+
+아키텍처에 너무 집착하면 실용성을 헤칠 수 있다.
+controller에서 repository 직접 호출을 두려워하지 말자
+
+?? JPA를 사용할 때 
+스프링 @Transacional은 기본적으로 롤백 시키고
+EntityManager도 주입한 뒤에 flush 메소드를 호출하면 commit 된다.
 
 
+@RunWith(SpringRunner.class)
+스프링이랑 같이 테스트하겠다.
+@SpringBootTest
+스프링부트를 띄운 상태로 테스트 하겠다.
+없으면 Autowired 실패
+스프링 컨테이너 안에서 테스트를 돌리겠다.
+@Transactional
+테스트가 끝나면 rollback을 하겠다(Test에서는)
+
+데이터를 가지고 있는 데서 비즈니스 로직이 나가는 게
+응집도가 있는 객체지향적 설계
+: 주문 서비스의 주문과 주문 취소 메서드를 보면 
+비즈니스 로직 대부분이 엔티티에 있다. 
+서비스 계층은 단순히 엔티티에 필요한 요청을 위임하는 역할을 한다. 
+이처럼 엔티티가 비즈니스 로직을 가지고 객체 지향의 특성을 
+적극 활용하는 것을 도메인 모델 패턴이라 한다. 
+(http://martinfowler.com/eaaCatalog/domainModel.html)
+
+일반적으로 sql 던지고 했을 땐 TSP를 썼다
+반대로 엔티티에는 비즈니스 로직이 거의 없고 서비스 계층에서 대부분
+의 비즈니스 로직을 처리하는 것을 트랜잭션 스크립트 패턴이라 한다.
+(http://martinfowler.com/eaaCatalog/transactionScript.html)
+
+실제로 한 프로젝트에서 두 가지를 활용하기도 하므로
+현상황에 맞는 대응책을 사용하면 된다.
+
+
+
+
+
+
+
+
+
+
+★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+GenerateValue와 sequence?
 
 
 
