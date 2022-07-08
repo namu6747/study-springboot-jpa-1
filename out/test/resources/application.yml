@@ -13,8 +13,11 @@ spring:
 #      hibernate:
 #        show_sql: true // logger를 통해서 찍어야지
 #        format_sql: true
-
+# 극
 logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type: trace
+    
+    #극단적으로 이야기하면 다 없어도 된다
+    #본래 당연히 Test는 다른 db로 돌리는 게 맞다

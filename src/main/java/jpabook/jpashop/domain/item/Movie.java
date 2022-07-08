@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("M")
 @Getter
 @Setter
-public class Movie extends OrderItem {
+public class Movie extends Item {
 
     private String director;
     private String actor;
