@@ -152,6 +152,7 @@ JPA에선 병합보단 변경 감지를 사용하자
 
 ?트랜잭션이 있는 서비스 계층에 식별자와 변결할 데이터를 명확하게 전달
 Setter 나열하지말고 Entity 내에서 추적할 수 있도록 change 같은 메소드 정의
+트랜잭션 걸린 Service method 내부에서 찾고, 수정 (DirtyChecking)
 
 ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 GenerateValue와 sequence?
